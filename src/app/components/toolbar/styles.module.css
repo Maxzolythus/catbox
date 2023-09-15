@@ -1,0 +1,13 @@
+.nav {
+    background: darkred;
+    margin: 0;
+    padding: 1em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.nav > * {
+    margin-left: 1em;
+    color: white;
+}
