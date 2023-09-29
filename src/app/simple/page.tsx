@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -8,23 +8,20 @@ import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import CharacterPortrait from '../components/characterPortrait/characterPortrait'
+import { CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
 
 export default function Simple() {
-  const [ selectedCharacter, setSelectedCharacter ] = useState('Beatrice')
-  const characters = ['Battler', 'Beatrice']
-  const textDisplayTypes = ['Overlay', 'Speech']
-  const poses = {
-    'Battler': ['Crying']
-  }
-
+  const [ selectedCharacter, setSelectedCharacter ] = useState(CHARACTERS[0])
+  
   return (
     <div>
+      {selectedCharacter}
       <div className="container">
         <Grid container spacing={2} columns={16}>
-          {characters.map((item) => {
+          {CHARACTERS.map((character) => {
             return (
               <Grid item xs={2}>
-                <CharacterPortrait characterName={item} />
+                <CharacterPortrait onClick={setSelectedCharacter} characterName={character} />
               </Grid>
             )
           })}
@@ -35,13 +32,13 @@ export default function Simple() {
           <Select
             labelId="text-display-type-label"
             id="text-display-type-select"
-            value={textDisplayTypes[0]}
+            value={TEXTDISPLAYTYPES[0]}
             label="Text Display Type"
             //onChange={handleChange}
           >
-            {textDisplayTypes.map((item) => {
+            {TEXTDISPLAYTYPES.map((type) => {
               return (
-                <MenuItem value={item}>{item}</MenuItem>
+                <MenuItem value={type}>{type}</MenuItem>
               )
             })}
           </Select>
@@ -53,9 +50,9 @@ export default function Simple() {
             label="Pose"
             //onChange={handleChange}
           >
-            {poses[selectedCharacter]?.map((item) => {
+            {POSES[selectedCharacter]?.map((pose) => {
               return (
-                <MenuItem value={item}>{item}</MenuItem>
+                <MenuItem value={pose}>{pose}</MenuItem>
               )
             })}
           </Select>
