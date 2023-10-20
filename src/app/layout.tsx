@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Toolbar from './components/toolbar/toolbar'
+import ThemeRegistry from './util/themeRegistry'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,8 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Toolbar />
-        {children}
+        <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
       </body>
     </html>
   )
 }
+
