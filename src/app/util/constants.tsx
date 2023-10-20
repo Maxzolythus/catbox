@@ -1,6 +1,6 @@
 
 // Each of the characters in Umineko
-export const CHARACTERS = ['Battler', 'Beatrice', 'Bernkastle']
+export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Genji', 'Gohda', 'Hideyoshi', 'Maria', 'Ronove', 'Virgilia']
 
 // The various ways to display text in the app
 export const TEXTDISPLAYTYPES = ['Overlay', 'Speech']
@@ -12,7 +12,7 @@ export const ORIGINAL = 'Original'
 export const UPDATED = 'Updated'
 
 // Different poses each character can do
-export const POSES = {
+export const POSES: {[key: string]: string[]} = {
   'Battler': ['Crying'],
   'Beatrice': ['Exasperated', 'Evil Grin']
 }
