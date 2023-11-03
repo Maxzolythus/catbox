@@ -1,6 +1,8 @@
+// Each of the backgrounds in Umineko
+export const BACKGROUNDS = ['Chapel - Inside', 'Chapel - Outside']
 
 // Each of the characters in Umineko
-export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Genji', 'Gohda', 'Hideyoshi', 'Maria', 'Ronove', 'Virgilia']
+export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Genji', 'Gohda', 'Hideyoshi', 'Kinzo', 'Lamdadelta', 'Maria', 'Ronove', 'Virgilia']
 
 // The various ways to display text in the app
 export const TEXTDISPLAYTYPES = ['Overlay', 'Speech']

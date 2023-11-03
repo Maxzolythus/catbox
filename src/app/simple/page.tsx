@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import CharacterPortrait from '../components/characterPortrait/characterPortrait'
-import { CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
+import { BACKGROUNDS, CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
 import { Switch } from '@mui/base'
 import { Button, FormControlLabel, FormGroup, Stack } from '@mui/material'
 import styles from './styles.module.css'
@@ -16,6 +16,7 @@ import styles from './styles.module.css'
 export default function Simple() {
   const [ selectedCharacter, setSelectedCharacter ] = useState<string>(CHARACTERS[0])
   const [ selectedTextDisplayType, setSelectedTextDisplayType ] = useState(TEXTDISPLAYTYPES[0])
+  const [ selectedBackground, setSelectedBackground ] = useState(BACKGROUNDS[0])
   const [ selectedPose, setSelectedPose ] = useState(POSES[selectedCharacter] != undefined ? POSES[selectedCharacter][0] : undefined )
   const [ enhancedSprites, setEnhancedSprites ] = useState(true)
   
@@ -53,6 +54,23 @@ export default function Simple() {
               {TEXTDISPLAYTYPES.map((type) => {
                 return (
                   <MenuItem key={type} value={type}>{type}</MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
+
+          <FormControl>
+            <InputLabel id="background-label">Background</InputLabel>
+            <Select
+              labelId="background-label"
+              id="background-select"
+              value={selectedBackground}
+              label="Background"
+              onChange={(e) => setSelectedBackground(e.target.value)}
+            >
+              {BACKGROUNDS.map((background) => {
+                return (
+                  <MenuItem key={background} value={background}>{background}</MenuItem>
                 )
               })}
             </Select>
