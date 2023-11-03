@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container'
 import { useState } from "react"
-import { TEXTDISPLAYTYPES } from '../util/constants'
+import { ORIGINAL, TEXTDISPLAYTYPES, UPDATED } from '../util/constants'
 
 type TextProps = {
     text: string
@@ -40,13 +40,15 @@ export default function Preview({ background, characters, enhanced, textType, te
     }
 
     // getCharacter converts human readable character objects into file names
-    const getCharacter = (character) => {
-        return character
+    const getCharacter = (character : string) => {
+        const convertedCharacterName = character.toLowerCase().replace(' - ', '').replace(' ', '_')
+        const fileName = `${convertedCharacterName}_${enhanced ? UPDATED : ORIGINAL}_${`pose`}.png`
+        return fileName
     }
 
     return (
         <Container fixed>
-            {getBackground}
+            {getBackground()}
             {getCharacter(characters[0])}
             { textType === TEXTDISPLAYTYPES[0] ? <Overlay text={text} /> : <Speech text={text} /> }
         </Container>

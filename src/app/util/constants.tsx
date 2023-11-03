@@ -8,10 +8,10 @@ export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', '
 export const TEXTDISPLAYTYPES = ['Overlay', 'Speech']
 
 // Toggle for using orginal sprites
-export const ORIGINAL = 'Original'
+export const ORIGINAL = 'original'
 
 // Toggle for using updated sprites
-export const UPDATED = 'Updated'
+export const UPDATED = 'updated'
 
 // Different poses each character can do
 export const POSES: {[key: string]: string[]} = {
