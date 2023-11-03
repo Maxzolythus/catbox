@@ -12,6 +12,7 @@ import { BACKGROUNDS, CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/consta
 import { Switch } from '@mui/base'
 import { Button, FormControlLabel, FormGroup, Stack } from '@mui/material'
 import styles from './styles.module.css'
+import Preview from './preview'
 
 export default function Simple() {
   const [ selectedCharacter, setSelectedCharacter ] = useState<string>(CHARACTERS[0])
@@ -19,6 +20,7 @@ export default function Simple() {
   const [ selectedBackground, setSelectedBackground ] = useState(BACKGROUNDS[0])
   const [ selectedPose, setSelectedPose ] = useState(POSES[selectedCharacter] != undefined ? POSES[selectedCharacter][0] : undefined )
   const [ enhancedSprites, setEnhancedSprites ] = useState(true)
+  const [ imageText, setImageText ] = useState("")
   
   return (
     <div className={styles.container}>
@@ -99,7 +101,10 @@ export default function Simple() {
             label="Image Text"
             multiline
             rows={4}
-            defaultValue="Enter your text here..."
+            value={imageText}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setImageText(event.target.value);
+            }}
           />
           </Stack>
         
@@ -109,6 +114,7 @@ export default function Simple() {
         </FormGroup>
         </Stack>
       </form>
+      <Preview background={selectedBackground} characters={[ selectedCharacter ]} enhanced={enhancedSprites} textType={selectedTextDisplayType} text={imageText} />
     </div>
   )
 }
