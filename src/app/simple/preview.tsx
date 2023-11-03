@@ -1,4 +1,28 @@
+import Container from '@mui/material/Container'
 import { useState } from "react"
+import { TEXTDISPLAYTYPES } from '../util/constants'
+
+type TextProps = {
+    text: string
+}
+
+function Overlay({ text }: TextProps) {
+    return (
+        <>
+            <p>Overlay</p>
+            <p>{text}</p>
+        </>
+    )
+}
+
+function Speech({ text }: TextProps) {
+    return (
+        <>
+            <p>Speech</p>
+            <p>{text}</p>
+        </>
+    )
+}
 
 type PreviewProps = {
     background: string,
@@ -21,10 +45,10 @@ export default function Preview({ background, characters, enhanced, textType, te
     }
 
     return (
-        <>
+        <Container fixed>
             {getBackground}
             {getCharacter(characters[0])}
-            <p>{text}</p>
-        </>
+            { textType === TEXTDISPLAYTYPES[0] ? <Overlay text={text} /> : <Speech text={text} /> }
+        </Container>
     )
 }
