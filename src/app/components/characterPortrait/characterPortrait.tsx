@@ -1,14 +1,23 @@
 import { Button } from "@mui/base"
+import { useState } from "react"
 
 type CharacterPortraitProps = {
     characterName: string
     onClick?: Function
+    defaultSelected?: boolean
 }
 
-export default function CharacterPortrait({ characterName, onClick }: CharacterPortraitProps) {
+export default function CharacterPortrait({ characterName, onClick, defaultSelected = false }: CharacterPortraitProps) {
+    const [ selected, setSelected ] = useState(defaultSelected)
+
+    const clickHandler = (event : React.MouseEvent<HTMLButtonElement>) => {
+        onClick && onClick(event.target?.innerText)
+        setSelected((prev) => !prev)
+    }
+
     return (
         <>
-          <Button onClick={(event) => onClick && onClick(event.target.innerText)}>{characterName}</Button>
+          <Button onClick={(event) => clickHandler(event)} color={selected ? "primary" : "secondary"}>{characterName}</Button>
         </>
     )
 }
