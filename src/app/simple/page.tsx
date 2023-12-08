@@ -8,16 +8,17 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import CharacterPortrait from '../components/characterPortrait/characterPortrait'
-import { BACKGROUNDS, CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
+import { BACKGROUNDIMAGES, CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
 import { Switch } from '@mui/base'
 import { Button, FormControlLabel, FormGroup, Stack } from '@mui/material'
 import styles from './styles.module.css'
 import Preview from './preview'
 
 export default function Simple() {
+  const backgrounds = Object.keys(BACKGROUNDIMAGES)
   const [ selectedCharacter, setSelectedCharacter ] = useState<string>(CHARACTERS[0])
   const [ selectedTextDisplayType, setSelectedTextDisplayType ] = useState(TEXTDISPLAYTYPES[0])
-  const [ selectedBackground, setSelectedBackground ] = useState(BACKGROUNDS[0])
+  const [ selectedBackground, setSelectedBackground ] = useState(backgrounds[0])
   const [ selectedPose, setSelectedPose ] = useState(POSES[selectedCharacter] != undefined ? POSES[selectedCharacter][0] : undefined )
   const [ enhancedSprites, setEnhancedSprites ] = useState(true)
   const [ imageText, setImageText ] = useState("")
@@ -70,7 +71,7 @@ export default function Simple() {
               label="Background"
               onChange={(e) => setSelectedBackground(e.target.value)}
             >
-              {BACKGROUNDS.map((background) => {
+              {backgrounds.map((background) => {
                 return (
                   <MenuItem key={background} value={background}>{background}</MenuItem>
                 )

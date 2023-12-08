@@ -1,9 +1,7 @@
 import RoseGarden from '../assets/backgrounds/rose_garden.png'
 
-// Each of the backgrounds in Umineko
-export const BACKGROUNDS = ['Chapel - Inside', 'Chapel - Outside', 'Rose Garden']
-
-export const BACKGROUNDIMAGES = {'rose_garden': RoseGarden}
+// Each of the backgrounds in Umineko and their coresponding images
+export const BACKGROUNDIMAGES = {'Chapel - Inside': RoseGarden, 'Chapel - Outside': RoseGarden,'Rose Garden': RoseGarden}
 
 // Each of the characters in Umineko
 export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Genji', 'Gohda', 'Hideyoshi', 'Kinzo', 'Lamdadelta', 'Maria', 'Ronove', 'Virgilia']

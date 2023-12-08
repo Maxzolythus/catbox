@@ -5,9 +5,6 @@ import { useState } from "react"
 import { BACKGROUNDIMAGES, ORIGINAL, TEXTDISPLAYTYPES, UPDATED } from '../util/constants'
 import { Paper, Stack } from '@mui/material'
 
-// const backgroundImages = require.context('../assets/background', true, /\.png$/)
-// const imagePaths = backgroundImages.keys()
-
 type TextProps = {
     text: string
 }
@@ -40,14 +37,12 @@ type PreviewProps = {
 
 export default function Preview({ background, characters, enhanced, textType, text }: PreviewProps) {
 
-    // getBackground converts human readable background names into background file names
+    // getBackground returns the background image
     const getBackground = () => {
-        const convertedBackground = background.toLowerCase().replace(' - ', '').replace(' ', '_')
-        const fileName = `../assets/${convertedBackground}.png`
         return (
             <>
                 <Image 
-                src={BACKGROUNDIMAGES[convertedBackground]}
+                src={BACKGROUNDIMAGES[background]}
                 width={500}
                 height={500} 
                 alt={background}/>
