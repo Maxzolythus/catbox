@@ -7,7 +7,7 @@ export const BACKGROUNDIMAGES = {'Chapel - Inside': RoseGarden, 'Chapel - Outsid
 export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Genji', 'Gohda', 'Hideyoshi', 'Kinzo', 'Lamdadelta', 'Maria', 'Ronove', 'Virgilia']
 
 // The various ways to display text in the app
-export const TEXTDISPLAYTYPES = ['Overlay', 'Speech']
+export const TEXTDISPLAYTYPES = ['None', 'Overlay', 'Speech']
 
 // Toggle for using orginal sprites
 export const ORIGINAL = 'original'

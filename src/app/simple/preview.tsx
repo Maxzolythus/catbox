@@ -57,11 +57,18 @@ export default function Preview({ background, characters, enhanced, textType, te
         return fileName
     }
 
+    // renderText returns inserted text in the correct format
+    const renderText = () => {
+        if (textType !== "None") {
+            return textType === TEXTDISPLAYTYPES[1] ? <Overlay text={text} /> : <Speech text={text} />
+        }
+    }
+
     return (
         <Stack>
         <h1>Preview:</h1>
         <Container fixed>
-            { textType === TEXTDISPLAYTYPES[0] ? <Overlay text={text} /> : <Speech text={text} /> }
+            {renderText()}
             {getBackground()}
             {getCharacter(characters[0])}
         </Container>
