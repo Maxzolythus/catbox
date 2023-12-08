@@ -42,21 +42,21 @@ export default function Simple() {
             )
           })}
         </Grid>
-        
+
         <FormGroup>
         <Stack spacing={2}>
-          <FormControl>
-            <InputLabel id="text-display-type-label">Text Display Type</InputLabel>
+        <FormControl>
+            <InputLabel id="pose-label">Pose</InputLabel>
             <Select
-              labelId="text-display-type-label"
-              id="text-display-type-select"
-              value={selectedTextDisplayType}
-              label="Text Display Type"
-              onChange={(e) => setSelectedTextDisplayType(e.target.value)}
+              labelId="pose-label"
+              id="pose-select"
+              label="Pose"
+              value={selectedPose}
+              onChange={(e) => setSelectedPose(e.target.value)}
             >
-              {TEXTDISPLAYTYPES.map((type) => {
+              {POSES[selectedCharacter]?.map((pose) => {
                 return (
-                  <MenuItem key={type} value={type}>{type}</MenuItem>
+                  <MenuItem key={pose} value={pose}>{pose}</MenuItem>
                 )
               })}
             </Select>
@@ -80,17 +80,17 @@ export default function Simple() {
           </FormControl>
 
           <FormControl>
-            <InputLabel id="pose-label">Pose</InputLabel>
+            <InputLabel id="text-display-type-label">Text Display Type</InputLabel>
             <Select
-              labelId="pose-label"
-              id="pose-select"
-              label="Pose"
-              value={selectedPose}
-              onChange={(e) => setSelectedPose(e.target.value)}
+              labelId="text-display-type-label"
+              id="text-display-type-select"
+              value={selectedTextDisplayType}
+              label="Text Display Type"
+              onChange={(e) => setSelectedTextDisplayType(e.target.value)}
             >
-              {POSES[selectedCharacter]?.map((pose) => {
+              {TEXTDISPLAYTYPES.map((type) => {
                 return (
-                  <MenuItem key={pose} value={pose}>{pose}</MenuItem>
+                  <MenuItem key={type} value={type}>{type}</MenuItem>
                 )
               })}
             </Select>
