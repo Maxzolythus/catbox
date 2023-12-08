@@ -96,7 +96,7 @@ export default function Simple() {
             </Select>
           </FormControl>
         
-
+          { selectedTextDisplayType !== 'None' &&
           <TextField
             id="multiline-textbox"
             label="Image Text"
@@ -106,7 +106,7 @@ export default function Simple() {
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setImageText(event.target.value);
             }}
-          />
+          /> }
           </Stack>
         
           <Button type="submit">
