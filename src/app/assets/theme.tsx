@@ -26,7 +26,7 @@ const theme = createTheme({
                         opacity: '.5',
                         position: 'absolute',
                         width: '500px',
-                        height: '500px'
+                        height: '255px'
                     }
                 },
                 {
