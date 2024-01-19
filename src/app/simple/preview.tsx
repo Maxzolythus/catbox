@@ -4,6 +4,7 @@ import RoseGarden from '../assets/backgrounds/rose_garden.png'
 import { useState } from "react"
 import { BACKGROUNDIMAGES, ORIGINAL, TEXTDISPLAYTYPES, UPDATED } from '../util/constants'
 import { Paper, Stack } from '@mui/material'
+import Ribbon from './ribbon'
 
 type TextProps = {
     text: string
@@ -29,7 +30,7 @@ function Speech({ text }: TextProps) {
 
 type PreviewProps = {
     background: string,
-    characters: string[], // likely needs to be an object that is character name, pose, and position
+    characters: {[key: string]: Character}, // likely needs to be an object that is character name, pose, and position
     enhanced: boolean,
     textType: string,
     text: string
@@ -69,8 +70,13 @@ export default function Preview({ background, characters, enhanced, textType, te
         <h1>Preview:</h1>
         <Container fixed>
             {renderText()}
+            <Paper variant='characterOverlay'>
+                {Object.keys(characters).map((character) => {
+                return getCharacter(character)
+                })}
+            </Paper>
             {getBackground()}
-            {getCharacter(characters[0])}
+            <Ribbon characters={characters} />
         </Container>
         </Stack>
     )
