@@ -30,6 +30,15 @@ const theme = createTheme({
                     }
                 },
                 {
+                    props: { variant: 'characterOverlay' },
+                    style: {
+                        backgroundColor: 'transparent',
+                        position: 'absolute',
+                        width: '500px',
+                        height: '255px'
+                    }
+                },
+                {
                     props: { variant: 'text'},
                     style: {
                         opacity: '.5',
