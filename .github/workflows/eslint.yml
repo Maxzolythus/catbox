@@ -3,7 +3,7 @@ name: linting
 on:
   push:
     branches: [$default-branch]
-  pull_requests:
+  pull_request:
     branches: [$default-branch]
 
 jobs:
