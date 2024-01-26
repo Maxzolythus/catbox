@@ -8,23 +8,38 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import CharacterPortrait from '../components/characterPortrait/characterPortrait'
-import { BACKGROUNDS, CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
+import { BACKGROUNDIMAGES, CHARACTERS, TEXTDISPLAYTYPES, POSES } from '../util/constants'
 import { Switch } from '@mui/base'
 import { Button, FormControlLabel, FormGroup, Stack } from '@mui/material'
 import styles from './styles.module.css'
 import Preview from './preview'
 
 export default function Simple() {
-  const [ selectedCharacter, setSelectedCharacter ] = useState<string>(CHARACTERS[0])
+  const backgrounds = Object.keys(BACKGROUNDIMAGES)
+
+  const [ selectedCharacters, setSelectedCharacters ] = useState({})
   const [ selectedTextDisplayType, setSelectedTextDisplayType ] = useState(TEXTDISPLAYTYPES[0])
-  const [ selectedBackground, setSelectedBackground ] = useState(BACKGROUNDS[0])
-  const [ selectedPose, setSelectedPose ] = useState(POSES[selectedCharacter] != undefined ? POSES[selectedCharacter][0] : undefined )
+  const [ selectedBackground, setSelectedBackground ] = useState(backgrounds[0])
   const [ enhancedSprites, setEnhancedSprites ] = useState(true)
   const [ imageText, setImageText ] = useState("")
+
+  const removeKey = (key:string, { [key]: _, ...rest }) => rest
+
+  const modifyCharacters = (characterName:string) => {
+    if (characterName in selectedCharacters) { // remove character
+      setSelectedCharacters((prev) => (
+        removeKey(characterName, prev)
+      ))
+    } else { // add character
+      setSelectedCharacters((prev) => (
+        {...prev, [characterName]: {name: characterName, pose: POSES[characterName] ? POSES[characterName][0] : undefined, x: 0, y: 0}}
+      ))
+    }
+  }
   
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={() => alert(`${selectedCharacter} ${selectedTextDisplayType} ${selectedPose} ${enhancedSprites}`)}>
+      <form className={styles.form} onSubmit={() => alert(`${selectedCharacters} ${selectedTextDisplayType} ${selectedPose} ${enhancedSprites}`)}>
         <FormControl>
           <FormControlLabel 
             control={<Switch checked={enhancedSprites} onChange={() => setEnhancedSprites((prev) => !prev)} />} 
@@ -36,14 +51,31 @@ export default function Simple() {
           {CHARACTERS.map((character) => {
             return (
               <Grid key={character} item xs={2}>
-                <CharacterPortrait onClick={setSelectedCharacter} characterName={character} />
+                <CharacterPortrait onClick={modifyCharacters} characterName={character} />
               </Grid>
             )
           })}
         </Grid>
-        
+
         <FormGroup>
         <Stack spacing={2}>
+          <FormControl>
+            <InputLabel id="background-label">Background</InputLabel>
+            <Select
+              labelId="background-label"
+              id="background-select"
+              value={selectedBackground}
+              label="Background"
+              onChange={(e) => setSelectedBackground(e.target.value)}
+            >
+              {backgrounds.map((background) => {
+                return (
+                  <MenuItem key={background} value={background}>{background}</MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
+
           <FormControl>
             <InputLabel id="text-display-type-label">Text Display Type</InputLabel>
             <Select
@@ -60,42 +92,8 @@ export default function Simple() {
               })}
             </Select>
           </FormControl>
-
-          <FormControl>
-            <InputLabel id="background-label">Background</InputLabel>
-            <Select
-              labelId="background-label"
-              id="background-select"
-              value={selectedBackground}
-              label="Background"
-              onChange={(e) => setSelectedBackground(e.target.value)}
-            >
-              {BACKGROUNDS.map((background) => {
-                return (
-                  <MenuItem key={background} value={background}>{background}</MenuItem>
-                )
-              })}
-            </Select>
-          </FormControl>
-
-          <FormControl>
-            <InputLabel id="pose-label">Pose</InputLabel>
-            <Select
-              labelId="pose-label"
-              id="pose-select"
-              label="Pose"
-              value={selectedPose}
-              onChange={(e) => setSelectedPose(e.target.value)}
-            >
-              {POSES[selectedCharacter]?.map((pose) => {
-                return (
-                  <MenuItem key={pose} value={pose}>{pose}</MenuItem>
-                )
-              })}
-            </Select>
-          </FormControl>
         
-
+          { selectedTextDisplayType !== 'None' &&
           <TextField
             id="multiline-textbox"
             label="Image Text"
@@ -105,7 +103,7 @@ export default function Simple() {
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setImageText(event.target.value);
             }}
-          />
+          /> }
           </Stack>
         
           <Button type="submit">
@@ -114,7 +112,7 @@ export default function Simple() {
         </FormGroup>
         </Stack>
       </form>
-      <Preview background={selectedBackground} characters={[ selectedCharacter ]} enhanced={enhancedSprites} textType={selectedTextDisplayType} text={imageText} />
+      <Preview background={selectedBackground} characters={selectedCharacters} enhanced={enhancedSprites} textType={selectedTextDisplayType} text={imageText} />
     </div>
   )
 }

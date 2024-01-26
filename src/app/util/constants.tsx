@@ -1,11 +1,13 @@
-// Each of the backgrounds in Umineko
-export const BACKGROUNDS = ['Chapel - Inside', 'Chapel - Outside']
+import RoseGarden from '../assets/backgrounds/rose_garden.png'
+
+// Each of the backgrounds in Umineko and their coresponding images
+export const BACKGROUNDIMAGES = {'Chapel - Inside': RoseGarden, 'Chapel - Outside': RoseGarden,'Rose Garden': RoseGarden}
 
 // Each of the characters in Umineko
-export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Genji', 'Gohda', 'Hideyoshi', 'Kinzo', 'Lamdadelta', 'Maria', 'Ronove', 'Virgilia']
+export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Erika', 'Eva', 'Eva - Beatrice', 'Eva - Young', 'Gaap', 'Genji', 'Gohda', 'Hideyoshi', 'Kinzo', 'Kumasawa', 'Lamdadelta', 'Maria', 'Ronove', 'Virgilia']
 
 // The various ways to display text in the app
-export const TEXTDISPLAYTYPES = ['Overlay', 'Speech']
+export const TEXTDISPLAYTYPES = ['None', 'Overlay', 'Speech']
 
 // Toggle for using orginal sprites
 export const ORIGINAL = 'original'
