@@ -1,8 +1,16 @@
 matrix:
 - name: javascript-typescript
+  pipeline:
+    - pyspelling.filters.javascript:
+        jsdocs: true
+        strings: true
   aspell:
     lang: en
     d: en_US
+  dictionary:
+    wordlists:
+    - en-custom.txt
+    output: build/dictionary/python.dic
   glob_flags: N|G|B
   sources:
   - src/**/*.js
@@ -14,5 +22,9 @@ matrix:
     lang: en
     d: en_US
     mode: markdown
+  dictionary:
+    wordlists:
+    - en-custom.txt
+    output: build/dictionary/python.dic
   sources:
   - README.md
