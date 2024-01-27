@@ -22,8 +22,6 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-        run: |
-          npm install eslint@8.48.0
 
       - name: Run CodeQL
         uses: github/codeql-action/init@v3
