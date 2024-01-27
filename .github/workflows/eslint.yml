@@ -22,3 +22,7 @@ jobs:
 
       - name: Run ESLint
         run: npx eslint .
+
+      - name: Spellcheck
+        uses: rojopolis/spellcheck-github-actions@v0
+            
