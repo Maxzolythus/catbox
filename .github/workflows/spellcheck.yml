@@ -1,0 +1,21 @@
+name: spellcheck
+
+on:
+  push:
+  pull_request:
+    branches: [$default-branch]
+
+jobs:
+  eslint:
+    name: Run spellcheck
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Spellcheck
+        uses: rojopolis/spellcheck-github-actions@v0
+            
