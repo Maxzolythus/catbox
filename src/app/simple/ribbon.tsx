@@ -11,7 +11,7 @@ export default function Ribbon({characters} : RibbonProps) {
         <h2>Ribbon</h2>
         <Stack spacing={2} sx={{ maxHeight: '250px', overflow: 'auto' }}>
           {Object.keys(characters).map((character) => {
-            return <RibbonCard character={characters[character]} />
+            return <RibbonCard key={`${character}-ribbon-card`} character={characters[character]} />
           })}
         </Stack>
       </Stack>

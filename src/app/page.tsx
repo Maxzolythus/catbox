@@ -10,7 +10,7 @@ export default function Home() {
         <div>
           <div className="text-center">
             <h1>cat.box</h1>
-            <h2>Create your own closed rooms that can't be seen without love!</h2>
+            <h2>Create your own closed rooms that can&apos;t be seen without love!</h2>
           </div>
         <div>
           <Link href="/simple"> 
