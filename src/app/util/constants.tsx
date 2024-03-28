@@ -1,6 +1,6 @@
 import RoseGarden from '../assets/backgrounds/rose_garden.png'
 
-// Each of the backgrounds in Umineko and their coresponding images
+// Each of the backgrounds in Umineko and their corresponding images
 export const BACKGROUNDIMAGES = {'Chapel - Inside': RoseGarden, 'Chapel - Outside': RoseGarden,'Rose Garden': RoseGarden}
 
 // Each of the characters in Umineko
@@ -9,7 +9,7 @@ export const CHARACTERS = ['Ange', 'Battler', 'Beatrice', 'Bernkastle', 'Erika',
 // The various ways to display text in the app
 export const TEXTDISPLAYTYPES = ['None', 'Overlay', 'Speech']
 
-// Toggle for using orginal sprites
+// Toggle for using original sprites
 export const ORIGINAL = 'original'
 
 // Toggle for using updated sprites
