@@ -1,3 +1,4 @@
+// Names, Titles, and Places associated with Umineko
 Umineko
 catbox
 Ange
@@ -16,3 +17,28 @@ Lamdadelta
 Maria
 Ronove
 Virgilia
+
+// Known tech jargin
+mui
+TODO
+redux
+js
+bg
+br
+px
+xl
+ThemeRegistry
+tsx
+github
+https
+issuecomment
+png
+multiline
+textbox
+
+// Function and comp names
+getBackground
+getCharacter
+renderText
+util
+ribbonCard
